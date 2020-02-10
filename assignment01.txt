@@ -1,0 +1,23 @@
+//---> banking project
+
+
+1. represent an object 'Bank Account'
+2. bank account should have
+	1. account number
+	2. name
+	3. password
+	4. balance
+	5. interest rate
+
+3. should have operations
+	1. deposit  <---- must not allow negative deposit
+	2.  withdraw 
+		* positive value only
+		* can't overdraw
+		* password must be correct
+
+	3. credit interst
+		* one month interest using formula
+			* balance+=balance*rate/1200
+
+	4. show  <---- display informations about the account
