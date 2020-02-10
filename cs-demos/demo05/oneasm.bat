@@ -1,0 +1,1 @@
+csc factorial-app.cs math.cs -out:fullapp.exe
