@@ -1,0 +1,38 @@
+
+1. create a class library ConceptArchitect.Finance
+
+2. Create classes
+	* Bank
+	* BankAccount
+
+
+3. BankAccount should support
+	* account number
+	* name
+	* password
+	* balance
+
+	* Deposit(double amount)
+	* Withdraw(double amount,password)
+	* CreditInterest
+
+
+4. Bank Should have
+	* name
+	* interest rate
+	* maintain a list of accounts
+
+	# operations
+	* open account
+	* close account <--- require password and balance>=0
+	* deposit(int accountNumber, double balance)
+	* withdraw(int accountNmber , String password, double amount)
+	* Transfer(int src, int amount, String password, int target)
+	* CreditInterest <--- to all accounts
+	* PrintAccountList <--- print all account
+
+5. ATM class
+	* connect with Bank
+	* allow menu driven front end operations
+
+ 
