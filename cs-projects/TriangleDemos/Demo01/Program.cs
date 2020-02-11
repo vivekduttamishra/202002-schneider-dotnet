@@ -15,8 +15,11 @@ namespace Demo01
             TestTriangle(t1);
 
             Triangle t2 = new Triangle(3,6,12);
+            
             //t2.Set(3, 6, 12);
             TestTriangle(t2);
+
+
 
             //t1.s3 = 100;     //now its invalid, but Triangle doesn't know it has become invalid
             t1.Set(3, 4, 100);  //now system knows this new combination is invalid
@@ -30,9 +33,16 @@ namespace Demo01
         }
         private static void TestTriangle(Triangle t1)
         {
-            t1.Draw();
-            Console.WriteLine("Perimeter is " + t1.Perimeter());
-            Console.WriteLine();
+            if (t1.IsValid())
+            {
+                t1.Draw();
+                Console.WriteLine("Perimeter is " + t1.Perimeter());
+                Console.WriteLine();
+            }
+            else
+            {
+                Console.WriteLine("Not a Valid Triangle");
+            }
         }
     }
 }

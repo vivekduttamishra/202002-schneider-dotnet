@@ -10,7 +10,7 @@ namespace Demo01
     {
         //private unless marked otherwise
         int s1, s2, s3;
-        bool valid = true;
+         bool valid = true;
 
         public Triangle()
         {
