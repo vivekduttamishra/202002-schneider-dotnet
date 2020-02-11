@@ -42,12 +42,23 @@ namespace Demo01
             return valid;
         }
 
-        public int Perimeter()
+        //public int Perimeter()
+        //{
+        //    if (IsValid())
+        //        return s1 + s2 + s3;
+        //    else
+        //        return -1; //indicates error
+        //}
+
+        public int Perimeter
         {
-            if (IsValid())
-                return s1 + s2 + s3;
-            else
-                return -1; //indicates error
+            get
+            {
+                if (IsValid())
+                    return s1 + s2 + s3;
+                else
+                    return -1; //indicates error
+            }
         }
 
         public void Draw()

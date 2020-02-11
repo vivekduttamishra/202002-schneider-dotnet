@@ -36,7 +36,7 @@ namespace Demo01
             if (t1.IsValid())
             {
                 t1.Draw();
-                Console.WriteLine("Perimeter is " + t1.Perimeter());
+                Console.WriteLine("Perimeter is " + t1.Perimeter);
                 Console.WriteLine();
             }
             else
