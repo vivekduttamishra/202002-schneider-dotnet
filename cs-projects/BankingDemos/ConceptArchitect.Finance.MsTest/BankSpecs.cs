@@ -135,7 +135,41 @@ namespace ConceptArchitect.Finance.MsTest
 
 
         }
-        
+
+        [TestMethod]
+        [Ignore]
+        public void TransferFailsForInvalidSourceAccount()
+        {
+            
+        }
+
+        [TestMethod]
+        [Ignore]
+        public void TransferFailsForInvalidTargetAccount()
+        {
+
+        }
+
+        [TestMethod]
+        [Ignore]
+        public void TransferFailsForInvalidSourceAccountPassword()
+        {
+
+        }
+
+        [TestMethod]
+        [Ignore]
+        public void TransferFailsForInsufficientBalanceInSource()
+        {
+
+        }
+
+        [TestMethod]
+        [Ignore]
+        public void TransferTransferFundInHappyCase()
+        {
+
+        }
 
     }
 }
