@@ -1,0 +1,31 @@
+class MyTest
+{
+	BankAccount account=new BankAccount(1000);
+	public MyTest()
+	{
+		
+	}
+	public Test1()
+	{
+		account.Deposit(1000); //now balance is 2000
+	}
+	public Test2()
+	{
+		account.Withdraw(500); //what is the balance? --->500
+	}
+	public Test3(){
+		//what is balance? --->1000
+	}
+}
+
+class TestRunner{
+	public void Run()
+	{
+		
+		foreach(var method in MyTest){
+			MyTest test=new MyTest();
+			test.Init()
+			method(); //run each test one by one
+		}
+	}
+}
