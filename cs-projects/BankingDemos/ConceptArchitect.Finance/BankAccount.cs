@@ -52,13 +52,7 @@ namespace ConceptArchitect.Finance
             }
         }
 
-        private static double interestRate; //shared. a single copy per class is maintained.
-
-        public static double InterestRate
-        {
-            get { return interestRate; }
-            set { interestRate = value; }
-        }
+     
 
 
 
@@ -75,11 +69,12 @@ namespace ConceptArchitect.Finance
         }
 
 
-        static int accountCount = 0;
+        //static int accountCount = 0;
 
-        public BankAccount( String name, String password, double balance)
+        //TODO: make this internal
+        public  BankAccount(int accountNumber, String name, String password, double balance)
         {
-            accountNumber = ++accountCount;
+            this.accountNumber = accountNumber;
             this.name = name;
             this.balance = balance;
             this.password = password;
@@ -87,22 +82,14 @@ namespace ConceptArchitect.Finance
             //InterestRate = interestRate;
         }
 
-        //public void  OpenAccount(int accountNumber, String name, String password, double balance, double interestRate)
-        //{
-        //    this.accountNumber = accountNumber;
-        //    this.name = name;
-        //    this.balance = balance;
-        //    this.password = password;
-        //    this.interestRate = interestRate;
-        //}
-
+       
         public void Show()
         {
             Console.WriteLine("Account Number: {0}",accountNumber);
             Console.WriteLine("Name: {0}", name);
             //Console.WriteLine("Password: {0}", password);
             Console.WriteLine("Balance: {0}", balance);
-            Console.WriteLine("Interest Rate: {0}", InterestRate);
+            //Console.WriteLine("Interest Rate: {0}", InterestRate);
             Console.WriteLine();
         }
 
@@ -146,10 +133,10 @@ namespace ConceptArchitect.Finance
             }
         }
 
-        public void CreditInterest()
+        public void CreditInterest(double interestRate)
         {
             //can access both static and non-static field
-            balance += balance * InterestRate / 1200;
+            balance += balance * interestRate / 1200;
         }
 
 

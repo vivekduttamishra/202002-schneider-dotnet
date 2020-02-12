@@ -36,7 +36,7 @@ namespace ConceptArchitect.Finance.MsTest
         public void Arrange()
         {
             name = "Vivek " + lastName;
-            account = new BankAccount(name, correctPassword, originalBalance);
+            account = new BankAccount(1,name, correctPassword, originalBalance);
         }
 
         [TestMethod]

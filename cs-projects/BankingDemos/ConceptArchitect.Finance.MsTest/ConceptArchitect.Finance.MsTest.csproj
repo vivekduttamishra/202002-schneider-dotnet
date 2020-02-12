@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BankAccountTests.cs" />
+    <Compile Include="BankSpecs.cs" />
     <Compile Include="Math.cs" />
     <Compile Include="MathTest.cs" />
     <Compile Include="UnitTest1.cs" />
