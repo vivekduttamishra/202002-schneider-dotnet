@@ -129,9 +129,9 @@ namespace ConceptArchitect.Finance.MsTest
             //open a new account
             bank.OpenAccount("New Account", correctPassword, balance);
             //access an old existing account
-            var account = bank.GetAccount(totalInitialAccounts, correctPassword);
+            var account = bank.GetAccount(5, correctPassword);
 
-            Assert.AreEqual("Name" + totalInitialAccounts, account.Name);
+            Assert.AreEqual("Name5" , account.Name);
 
 
         }
