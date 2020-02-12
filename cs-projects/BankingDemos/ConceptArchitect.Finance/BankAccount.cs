@@ -121,7 +121,7 @@ namespace ConceptArchitect.Finance
             
             if (amount > 0)
             {
-
+                balance += amount;
                 return true;
             }
                 

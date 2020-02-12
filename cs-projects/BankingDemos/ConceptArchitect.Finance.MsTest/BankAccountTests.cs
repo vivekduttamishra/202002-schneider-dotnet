@@ -18,6 +18,20 @@ namespace ConceptArchitect.Finance.MsTest
         String name;
         BankAccount account;
 
+        #region Helper Functions
+        private void AssertBalanceUnchanged()
+        {
+            Assert.AreEqual(originalBalance, account.Balance);
+        }
+
+        private void AssertBalanceEquals(double expected)
+        {
+            Assert.AreEqual(expected, account.Balance);
+        }
+        #endregion
+
+
+
         [TestInitialize]
         public void Arrange()
         {
@@ -35,7 +49,8 @@ namespace ConceptArchitect.Finance.MsTest
 
             //A ---> Assert
             Assert.IsTrue(result);
-            Assert.AreEqual(originalBalance+1000, account.Balance);
+            //Assert.AreEqual(originalBalance+1000, account.Balance);
+            AssertBalanceEquals(originalBalance + 1000);
         }
         [TestMethod]
         public void DepositFailsForNegativeAmount()
@@ -44,8 +59,9 @@ namespace ConceptArchitect.Finance.MsTest
             bool result = account.Deposit(-1000);
 
             //ASSERT
-            Assert.IsFalse(result);
-            Assert.AreEqual(originalBalance, account.Balance);
+            //Assert.IsFalse(result);
+            //Assert.AreEqual(originalBalance, account.Balance);
+            AssertBalanceUnchanged();
         }
 
         [TestMethod]
@@ -54,62 +70,80 @@ namespace ConceptArchitect.Finance.MsTest
             bool result = account.Withdraw(1, "not"+correctPassword);
             Assert.IsFalse(result);
 
-            Assert.AreEqual(originalBalance, account.Balance);
+            //Assert.AreEqual(originalBalance, account.Balance);
+            AssertBalanceUnchanged();
         }
 
         [TestMethod]
-        [Ignore]
         public void WithdrawFailsForInsufficientBalance()
         {
+            var result = account.Withdraw(originalBalance + 1, correctPassword);
+            //Assert.AreEqual(originalBalance, account.Balance);
+
+            AssertBalanceUnchanged();
+
 
         }
         [TestMethod]
-        [Ignore]
+       // [Ignore]
         public void WithdrawFailsForNegativeAmount()
         {
-
+            account.Withdraw(-1, correctPassword);
+            AssertBalanceUnchanged();
         }
 
+       
+
         [TestMethod]
-        [Ignore]
+        //[Ignore]
         public void WithdrawHappyPath()
         {
-
+            account.Withdraw(originalBalance, correctPassword);
+            AssertBalanceEquals(0);
         }
 
+        
+
         [TestMethod]
-        [Ignore]
+        //[Ignore]
         public void NameChangeNotPermittedForDifferentLastName()
         {
-
+            var newName = "Something Else";
+            account.Name = newName;
+            Assert.AreEqual(name, account.Name);
         }
 
         [TestMethod]
-        [Ignore]
         public void NameChangePermittedForSameLastName()
         {
+            var newName = "New " + lastName;
+            account.Name = newName;
 
+            Assert.AreEqual(newName, account.Name);
         }
 
         [TestMethod]
-        [Ignore]
         public void AuthenticationFailsForWrongPassword()
         {
-
+            Assert.IsFalse(account.Authenticate("not" + correctPassword));
         }
 
         [TestMethod]
-        [Ignore]
         public void PasswordChangeFailsForWrongCurrentPassword()
         {
+            String newPassword = "New Password";
+            account.ChangePassword("not" + correctPassword, newPassword);
 
+            Assert.IsFalse(account.Authenticate(newPassword));
         }
 
         [TestMethod]
-        [Ignore]
         public void PasswordSucceedsWithCorrectCurrentPassword()
         {
+            String newPassword = "New Password";
+            account.ChangePassword( correctPassword, newPassword);
 
+            Assert.IsTrue(account.Authenticate(newPassword));
         }
 
 
