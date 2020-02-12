@@ -53,6 +53,7 @@
     <Compile Include="BankSpecs.cs" />
     <Compile Include="Math.cs" />
     <Compile Include="MathTest.cs" />
+    <Compile Include="SavingsAccountSpecs.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

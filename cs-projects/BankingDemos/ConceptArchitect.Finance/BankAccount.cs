@@ -117,7 +117,7 @@ namespace ConceptArchitect.Finance
         }
 
 
-        public bool Withdraw(double amount, String password)
+        public virtual bool Withdraw(double amount, String password)
         {
             if (amount < 0)
                 return false;
