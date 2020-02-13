@@ -4,9 +4,29 @@ namespace ConceptArchitect.Finance
 {
     public class Bank
     {
+
+        BankAccount[] accounts = new BankAccount[100];
+        private int AddAccount(int accountNumber, BankAccount account)
+        {
+            accounts[accountNumber] = account;
+            return accountNumber;
+        }
+        private void RemoveAccount(int accountNumber)
+        {
+            accounts[accountNumber] = null;
+        }
+
+        private BankAccount GetAccount(int accountNumber)
+        {
+            if (accountNumber < 1 || accountNumber > lastId)
+                return null;
+            return accounts[accountNumber];
+        }
+
+
         int accountCount = 0;
         int lastId;
-        BankAccount[] accounts = new BankAccount[100];
+        
         
         public Bank(string name, int rate)
         {
@@ -26,30 +46,21 @@ namespace ConceptArchitect.Finance
 
         public int OpenAccount(string type,string name, string password, double balance)
         {
+
             accountCount++;
             lastId++;
             int accountNumber = lastId;
-
             BankAccount account = null;
 
-            if(type=="SavingsAccount")
-                account=new SavingsAccount(accountNumber,name, password, balance);
-            else if(type=="CurrentAccount")
+            if (type == "SavingsAccount")
+                account = new SavingsAccount(accountNumber, name, password, balance);
+            else if (type == "CurrentAccount")
                 account = new CurrentAccount(accountNumber, name, password, balance);
             else
                 account = new OverdraftAccount(accountNumber, name, password, balance);
-
-            accounts[accountNumber] = account;
-
-            return accountNumber;
+            return AddAccount(accountNumber, account);
         }
-
-        private BankAccount GetAccount(int accountNumber)
-        {
-            if (accountNumber < 1 || accountNumber > lastId)
-                return null;
-            return accounts[accountNumber];
-        }
+        
         public BankAccount GetAccount(int accountNumber, string password)
         {
             var account = GetAccount(accountNumber);
@@ -59,6 +70,7 @@ namespace ConceptArchitect.Finance
                 return null;
             
         }
+        
 
         public bool CloseAccount(int accountNumber, string password)
         {
@@ -66,7 +78,7 @@ namespace ConceptArchitect.Finance
             var account = GetAccount(accountNumber, password);
             if (account != null && account.Balance >= 0)
             {
-                accounts[accountNumber] = null;
+                RemoveAccount(accountNumber);
                 accountCount--;
                 return true;
             }
@@ -74,6 +86,8 @@ namespace ConceptArchitect.Finance
                 return false;
 
         }
+
+        
 
         public bool Deposit(int accountNumber, double amount)
         {
