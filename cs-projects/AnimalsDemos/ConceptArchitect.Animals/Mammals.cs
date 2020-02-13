@@ -14,7 +14,7 @@ namespace ConceptArchitect.Animals
         }
     }
 
-    public class Cow : Mammal
+    public class Cow : Mammal, IDomestic
     {
         public override string Eat()
         {
@@ -43,7 +43,7 @@ namespace ConceptArchitect.Animals
         }
     }
 
-    public class Horse : Mammal
+    public class Horse : Mammal,IRideable, IDomestic
     {
         public override string Eat()
         {
@@ -59,7 +59,7 @@ namespace ConceptArchitect.Animals
         }
     }
 
-    public class Camel : Mammal
+    public class Camel : Mammal,IRideable, IDomestic
     {
         public override string Eat()
         {
@@ -76,7 +76,7 @@ namespace ConceptArchitect.Animals
         }
     }
 
-    public abstract class Cat : Mammal
+    public abstract class Cat : Mammal,IHunter
     {
         public override string Eat()
         {
@@ -93,7 +93,7 @@ namespace ConceptArchitect.Animals
         }
     }
 
-    public class Dog : Mammal
+    public class Dog : Mammal,IHunter, IDomestic
     {
         public override string Eat()
         {

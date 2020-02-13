@@ -17,5 +17,15 @@ namespace ConceptArchitect.Animals
         {
             return "Animal Died";
         }
+
+        public bool IsDomestic
+        {
+            get { return this is IDomestic; }
+        }
+
+        public override string ToString()
+        {
+            return GetType().Name+"#"+GetHashCode();
+        }
     }
 }

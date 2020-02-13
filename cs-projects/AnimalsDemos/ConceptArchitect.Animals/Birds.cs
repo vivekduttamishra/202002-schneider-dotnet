@@ -24,7 +24,7 @@ namespace ConceptArchitect.Animals
 
     }
 
-   public  class Parrot : Bird
+   public  class Parrot : Bird,IDomestic
     {
         public override string Eat()
         {
@@ -37,7 +37,7 @@ namespace ConceptArchitect.Animals
         }
     }
 
-   public  class Eagle: Bird
+   public  class Eagle: Bird,IHunter
     {
         public string Hunt()
         {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConceptArchitect.Animals
 {
-    public abstract class Reptile :Animal
+    public abstract class Reptile :Animal,IHunter
     {
 
         public override string Move()
