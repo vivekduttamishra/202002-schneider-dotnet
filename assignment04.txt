@@ -1,0 +1,11 @@
+1. Introduce to the concept of ArrayAccountStore
+2. An Array Account Store should be responsible for
+	* AddAccount
+	* GetAccountById
+	* RemoveAccount
+	* GetAllActiveAccount
+	* GetAllAccount
+
+3. Let Bank class use an object of ArrayAccountStore instead a normal array
+
+4. In Future we may replace ArrayAccountStore with ListAccountStore or FileAccountStore. How to design this idea?
