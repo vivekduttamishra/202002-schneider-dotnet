@@ -18,9 +18,9 @@ namespace ConceptArchitect.Finance.MsTest
         [TestInitialize]
         public void Setup()
         {
-            bank = new Bank();
+            bank = new Bank("ICICI",12);
             for (int i = 1; i <= 5; i++)
-                bank.OpenAccount("Name" + i, correctPassword, balance);
+                bank.OpenAccount("SavingsAccount","Name" + i, correctPassword, balance);
 
             totalInitialAccounts = bank.TotalAccounts;
         }
@@ -38,15 +38,15 @@ namespace ConceptArchitect.Finance.MsTest
         [TestMethod]
         public void OpenAccountReturnsAccountaNumber()
         {
-            var accountNumber = bank.OpenAccount(name,correctPassword, balance);
+            var accountNumber = bank.OpenAccount("SavingsAccount",name,correctPassword, balance);
             Assert.IsInstanceOfType(accountNumber, typeof(int));
         }
 
         [TestMethod]
         public void OpenAccountReturnsIncrementingAccountaNumber()
         {
-            var account1 = bank.OpenAccount(name, correctPassword, balance);
-            var account2 = bank.OpenAccount(name, correctPassword, balance);
+            var account1 = bank.OpenAccount("SavingsAccount",name, correctPassword, balance);
+            var account2 = bank.OpenAccount("SavingsAccount",name, correctPassword, balance);
 
             Assert.AreEqual(account1 + 1, account2);
         }
@@ -57,7 +57,7 @@ namespace ConceptArchitect.Finance.MsTest
             int max = 10;
             for(int i = 0; i < max; i++)
             {
-                bank.OpenAccount("Name" + i, "pass" + i, 1000);
+                bank.OpenAccount("SavingsAccount", "Name" + i, "pass" + i, 1000);
             }
 
             Assert.AreEqual(totalInitialAccounts+ max, bank.TotalAccounts);
@@ -67,7 +67,7 @@ namespace ConceptArchitect.Finance.MsTest
         [TestMethod]
         public void CloseAccountFailsForInvalidAccountNumber()
         {
-            var accountNumber = bank.OpenAccount(name, correctPassword, 20000);
+            var accountNumber = bank.OpenAccount("SavingsAccount", name, correctPassword, 20000);
             Assert.IsFalse(bank.CloseAccount(accountNumber+1,correctPassword));
 
         }
@@ -75,13 +75,13 @@ namespace ConceptArchitect.Finance.MsTest
         [TestMethod]
         public void CloseAccountFailsForInvalidPassword()
         {
-            var accountNumber = bank.OpenAccount(name, correctPassword, 20000);
+            var accountNumber = bank.OpenAccount("SavingsAccount", name, correctPassword, 20000);
             Assert.IsFalse(bank.CloseAccount(accountNumber, "not" + correctPassword));
         }
        [TestMethod]
         public void CloseAccountClosesValidAccountWithValidPassword()
         {
-            var accountNumber=bank.OpenAccount(name, correctPassword, 20000);
+            var accountNumber=bank.OpenAccount("SavingsAccount", name, correctPassword, 20000);
             var result=bank.CloseAccount(accountNumber, correctPassword);
             Assert.IsTrue(result);
             
@@ -89,9 +89,9 @@ namespace ConceptArchitect.Finance.MsTest
         [TestMethod]
         public void CloseAccountReducesTotalAccounts()
         {
-            bank.OpenAccount("account1", "pass", 10000);
-            var toClose = bank.OpenAccount("account1", "pass", 10000);
-            bank.OpenAccount("account1", "pass", 10000);
+            bank.OpenAccount("SavingsAccount", "account1", "pass", 10000);
+            var toClose = bank.OpenAccount("SavingsAccount", "account1", "pass", 10000);
+            bank.OpenAccount("SavingsAccount", "account1", "pass", 10000);
             var totalAccounts = bank.TotalAccounts;
             bank.CloseAccount(toClose, "pass");
 
@@ -127,7 +127,7 @@ namespace ConceptArchitect.Finance.MsTest
             //close an old account
             bank.CloseAccount(1, correctPassword);
             //open a new account
-            bank.OpenAccount("New Account", correctPassword, balance);
+            bank.OpenAccount("SavingsAccount", "New Account", correctPassword, balance);
             //access an old existing account
             var account = bank.GetAccount(5, correctPassword);
 

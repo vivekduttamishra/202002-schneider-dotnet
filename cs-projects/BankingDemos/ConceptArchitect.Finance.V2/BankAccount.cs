@@ -155,6 +155,10 @@ namespace ConceptArchitect.Finance
                 return false;
         }
 
+        public override string ToString()
+        {
+            return string.Format("{0} {1}\t{2}\t{3}", GetType().Name, accountNumber, balance, name);
+        }
 
 
 
