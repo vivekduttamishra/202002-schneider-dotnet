@@ -21,6 +21,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingTestApp01", "Banking
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConceptArchitect.Finance.MsTest", "ConceptArchitect.Finance.MsTest\ConceptArchitect.Finance.MsTest.csproj", "{C0A3FAFF-A29F-4AD0-AC21-0EBD49E77839}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConceptArchitect.Finance.V2", "ConceptArchitect.Finance.V2\ConceptArchitect.Finance.V2.csproj", "{14232C10-D208-4087-A7AA-C9A311FCB48B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConceptArchitect.Finance.V2.MSTests", "ConceptArchitect.Finance.V2.MSTests\ConceptArchitect.Finance.V2.MSTests.csproj", "{345F22D7-F5EB-4785-922C-485E41A98086}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +67,14 @@ Global
 		{C0A3FAFF-A29F-4AD0-AC21-0EBD49E77839}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0A3FAFF-A29F-4AD0-AC21-0EBD49E77839}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0A3FAFF-A29F-4AD0-AC21-0EBD49E77839}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14232C10-D208-4087-A7AA-C9A311FCB48B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14232C10-D208-4087-A7AA-C9A311FCB48B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14232C10-D208-4087-A7AA-C9A311FCB48B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14232C10-D208-4087-A7AA-C9A311FCB48B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{345F22D7-F5EB-4785-922C-485E41A98086}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{345F22D7-F5EB-4785-922C-485E41A98086}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{345F22D7-F5EB-4785-922C-485E41A98086}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{345F22D7-F5EB-4785-922C-485E41A98086}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
