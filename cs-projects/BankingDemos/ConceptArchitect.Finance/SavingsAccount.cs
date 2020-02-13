@@ -9,10 +9,11 @@ namespace ConceptArchitect.Finance
     public class SavingsAccount : BankAccount   //SavingsAccount is a type of BankAccount
     {
         public SavingsAccount(int accountNumber, string name, string password, double balance)
-                : base(accountNumber,name,password,balance)
+                : base(accountNumber, name, password, balance)
         {
+            MinimumBalance = 5000;
         }
-
+        public int MinimumBalance { get; set; }//= 5000;
         public override bool Withdraw(double amount, string password)
         {
             if (amount > Balance - MinimumBalance)
@@ -23,6 +24,6 @@ namespace ConceptArchitect.Finance
             
         }
 
-        public int MinimumBalance { get; set; } = 5000;
+        
     }
 }

@@ -43,7 +43,7 @@ namespace ConceptArchitect.Finance
             get { return accountNumber; }
         }
 
-        private double balance;
+        protected double balance;
         public double Balance
         {
             get
@@ -94,7 +94,7 @@ namespace ConceptArchitect.Finance
         }
 
 
-        public bool Deposit(double amount)
+        public virtual bool Deposit(double amount)
         {
             //if (amount > 0)
             //{
@@ -133,7 +133,7 @@ namespace ConceptArchitect.Finance
             }
         }
 
-        public void CreditInterest(double interestRate)
+        public virtual void CreditInterest(double interestRate)
         {
             //can access both static and non-static field
             balance += balance * interestRate / 1200;

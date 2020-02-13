@@ -5,6 +5,7 @@ namespace ConceptArchitect.Finance
     public class Bank
     {
         int accountCount = 0;
+        int lastId;
         BankAccount[] accounts = new BankAccount[100];
 
         public double InterestRate { get; set; }
@@ -13,10 +14,13 @@ namespace ConceptArchitect.Finance
         {
             get { return accountCount; }
         }
+        
 
         public int OpenAccount(string name, string password, double balance)
         {
-            int accountNumber = ++accountCount;
+            accountCount++;
+            lastId++;
+            int accountNumber = lastId;
 
             BankAccount account = new BankAccount(accountNumber,name, password, balance);
 
