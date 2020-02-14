@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{854417C1-E649-48B1-AD32-A894246286CE}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>BankApp01</RootNamespace>
-    <AssemblyName>BankApp01</AssemblyName>
+    <ProjectGuid>{D913F14D-2314-4A60-8C10-5FE115579A58}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ConceptArchitect.Finance.V3</RootNamespace>
+    <AssemblyName>ConceptArchitect.Finance.V3</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,17 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="ATM.cs" />
+    <Compile Include="Bank.cs" />
+    <Compile Include="BankAccount.cs" />
+    <Compile Include="BankingException.cs" />
+    <Compile Include="CurrentAccount.cs" />
+    <Compile Include="Input.cs" />
+    <Compile Include="InsufficientBalanceException.cs" />
+    <Compile Include="InvalidAccountException.cs" />
+    <Compile Include="InvalidCredentialsException.cs" />
+    <Compile Include="OverdraftAccount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ConceptArchitect.Finance.V3\ConceptArchitect.Finance.V3.csproj">
-      <Project>{d913f14d-2314-4a60-8c10-5fe115579a58}</Project>
-      <Name>ConceptArchitect.Finance.V3</Name>
-    </ProjectReference>
+    <Compile Include="SavingsAccount.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

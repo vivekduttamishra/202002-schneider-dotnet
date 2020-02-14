@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConceptArchitect.Finance.V3;
+using System;
 
 namespace ConceptArchitect.Finance
 {
@@ -18,7 +19,9 @@ namespace ConceptArchitect.Finance
         private BankAccount GetAccount(int accountNumber)
         {
             if (accountNumber < 1 || accountNumber > lastId)
-                return null;
+                //return null;
+                throw new InvalidAccountException(accountNumber);
+
             return accounts[accountNumber];
         }
 
@@ -63,59 +66,47 @@ namespace ConceptArchitect.Finance
         public BankAccount GetAccount(int accountNumber, string password)
         {
             var account = GetAccount(accountNumber);
-            if (account != null && account.Authenticate(password))
-                return account;
-            else
-                return null;
+            account.Authenticate(password);
+            return account; 
             
-        }
-        
+        }      
 
         public bool CloseAccount(int accountNumber, string password)
         {
             //return false;
             var account = GetAccount(accountNumber, password);
-            if (account != null && account.Balance >= 0)
-            {
-                RemoveAccount(accountNumber);
-                accountCount--;
-                return true;
-            }
-            else
-                return false;
+            if (account.Balance < 0)
+                throw new InsufficientBalanceException(accountNumber, -account.Balance, "Please Clear your dues before closing the account");
+            
+            RemoveAccount(accountNumber);
+            accountCount--;
+            
 
         }
 
         
 
-        public bool Deposit(int accountNumber, double amount)
+        public void Deposit(int accountNumber, double amount)
         {
             var account = GetAccount(accountNumber);
-            if (account == null)
-                return false;
-            return account.Deposit(amount);
+            account.Deposit(amount);
         }
 
-        public bool Withdraw(int accountNumber, String password,double amount)
+        public void Withdraw(int accountNumber, String password,double amount)
         {
             var account = GetAccount(accountNumber, password);
-            if (account == null)
-                return false;
-            return account.Withdraw(amount, password);
+            
+            account.Withdraw(amount, password);
         }
 
-        public bool Transfer(int from, string password, double amount, int to)
+        public void Transfer(int from, string password, double amount, int to)
         {
-            var src = GetAccount(from, password);
+            var src = GetAccount(from);
             var trgt = GetAccount(to);
-            if (src == null)
-                return false;
-            if (trgt == null)
-                return false;
-            if (src.Withdraw(amount, password))
-                return trgt.Deposit(amount);
-            else
-                return false;
+
+            src.Withdraw(amount, password);
+            trgt.Deposit(amount);
+            
         }
 
         public void CreditInterests()
