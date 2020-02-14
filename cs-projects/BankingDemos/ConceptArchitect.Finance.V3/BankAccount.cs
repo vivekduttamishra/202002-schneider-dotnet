@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace ConceptArchitect.Finance
 {
+    [Serializable]
    public abstract  class BankAccount
     {
         
@@ -106,7 +107,7 @@ namespace ConceptArchitect.Finance
 
        
        
-
+        
         public virtual void Deposit(double amount)
         {
 

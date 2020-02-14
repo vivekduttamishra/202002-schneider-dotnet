@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConceptArchitect.Finance
 {
+    [Serializable]
     public class OverdraftAccount : BankAccount
     {
         //new property
@@ -24,11 +25,11 @@ namespace ConceptArchitect.Finance
                 OdLimit = Balance / 10;
         }
 
-        public override bool Deposit(double amount)
+        public override void Deposit(double amount)
         {
-            var result=base.Deposit(amount);
+            base.Deposit(amount);
             _AdjustOdLimit();
-            return result;
+            
         }
 
         public override void CreditInterest(double interestRate)
@@ -42,13 +43,12 @@ namespace ConceptArchitect.Finance
             get { return Balance + OdLimit; }
         }
 
-        public override bool Withdraw(double amount, string password)
+        public override void Withdraw(double amount, string password)
         {
-            bool success = base.Withdraw(amount, password);
-            if(success && balance < 0)
+            base.Withdraw(amount, password);
+            if(balance < 0)
                 balance += (balance / 100);
 
-            return success;
         }
 
     }

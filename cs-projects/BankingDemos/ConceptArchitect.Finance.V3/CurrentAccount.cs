@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConceptArchitect.Finance
 {
+    [Serializable]
     public class CurrentAccount : BankAccount
     {
         public CurrentAccount(int accountNumber, string name, string password, double balance) 

@@ -4,6 +4,7 @@
     {
         public InsufficientBalanceException(int accountNumber, double deficit, string message="Insufficient Balance") : base(accountNumber, message)
         {
+            Deficit = deficit;
         }
 
         public double Deficit { get; set; }

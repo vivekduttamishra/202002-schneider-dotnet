@@ -1,0 +1,49 @@
+void f1()
+{
+	f2();
+}
+
+void f2()
+{
+	try{
+		f3();
+	}
+	catch(Exception1 ex){
+
+	} 
+
+	catch(Exception2 ex){
+
+	}catch(Exception3 ex){
+	}
+}
+
+
+void f3()
+{
+
+	try{
+		task1(); //may throw Exception1()
+		task2(); //may throw Exception2()
+		task3(); //may throw Exception3()
+
+	}catch(Exception1 ex){
+
+	} finally{
+		//this will execute no matter what
+	}
+
+	afterTry();
+}
+
+happy path: try--> finally --> aftertry  
+
+exception thrown and caught:  try(partial) -->catch -->finally -->aftertry
+
+exception thrown but not caught: try(partial) ---> finally ---> exit
+
+
+
+
+
+

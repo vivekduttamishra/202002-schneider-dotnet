@@ -3,21 +3,19 @@ using System;
 
 namespace ConceptArchitect.Finance
 {
-    public class Bank
+    public class BankV1 : ListAccountStore//ArrayAccountStore
     {
-        //ArrayAccountStore store = new ArrayAccountStore();
-        IAccountStore store;
+        
 
 
         int accountCount = 0;
         int lastId;
         
         
-        public Bank(string name, int rate, IAccountStore store)            
+        public BankV1(string name, int rate)
         {
             this.name = name;
             InterestRate = rate;
-            this.store = store;
         }
 
         private string name;
@@ -44,12 +42,12 @@ namespace ConceptArchitect.Finance
                 account = new CurrentAccount(accountNumber, name, password, balance);
             else
                 account = new OverdraftAccount(accountNumber, name, password, balance);
-            return store.AddAccount(accountNumber, account);
+            return AddAccount(accountNumber, account);
         }
         
         public BankAccount GetAccount(int accountNumber, string password)
         {
-            var account = store.GetAccount(accountNumber);
+            var account = GetAccount(accountNumber);
             account.Authenticate(password);
             return account; 
             
@@ -62,7 +60,7 @@ namespace ConceptArchitect.Finance
             if (account.Balance < 0)
                 throw new InsufficientBalanceException(accountNumber, -account.Balance, "Please Clear your dues before closing the account");
             
-            store.RemoveAccount(accountNumber);
+            RemoveAccount(accountNumber);
             accountCount--;
             return account.Balance;
 
@@ -72,7 +70,7 @@ namespace ConceptArchitect.Finance
 
         public void Deposit(int accountNumber, double amount)
         {
-            var account = store.GetAccount(accountNumber);
+            var account = GetAccount(accountNumber);
             account.Deposit(amount);
         }
 
@@ -85,8 +83,8 @@ namespace ConceptArchitect.Finance
 
         public void Transfer(int from, string password, double amount, int to)
         {
-            var src = store.GetAccount(from);
-            var trgt = store.GetAccount(to);
+            var src = GetAccount(from);
+            var trgt = GetAccount(to);
 
             src.Withdraw(amount, password);
             trgt.Deposit(amount);
@@ -95,18 +93,18 @@ namespace ConceptArchitect.Finance
 
         public void CreditInterests()
         {
-            var accounts =store. GetAllAccounts();
-            foreach(var account in accounts)
-               
-                    account.CreditInterest(InterestRate);
+            var accounts = GetAllAccounts();
+            for (int i = 1; i <= lastId; i++)
+                if (accounts[i] != null)
+                    accounts[i].CreditInterest(InterestRate);
         }
 
         public void PrintAccountList()
         {
-            var accounts =store. GetAllAccounts();
-            foreach(var account in accounts)
-                
-                    Console.WriteLine(account);
+            var accounts = GetAllAccounts();
+            for (int i=1;i<=lastId;i++)
+                if(accounts[i]!=null)
+                    Console.WriteLine(accounts[i]);
         }
 
     }
